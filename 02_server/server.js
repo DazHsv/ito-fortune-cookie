@@ -3,8 +3,10 @@ var fs = require("fs");
 var handler = function(req,res) {
   fs.readFile(__dirname + "/index.html",function(err, data){
     if(err) console.log(err);
-    res.statusCode = 200;
-    res.setHeader("Content-Type","text/html");
+    res.writeHead(200,{
+      "Content-Type":"text/html",
+      "Server":"Buho@0.0.0"
+    });
     res.write(data);
     res.end();
   });
