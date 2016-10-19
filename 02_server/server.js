@@ -1,5 +1,8 @@
-var http = require("http");
-var fs = require("fs");
+'use strict';
+const PORT = 8080, IP = '127.0.0.1';
+
+const http = require("http");
+const fs = require("fs");
 var handler = function(req,res) {
   fs.readFile(__dirname + "/index.html",function(err, data){
     if(err) console.log(err);
@@ -11,8 +14,8 @@ var handler = function(req,res) {
     res.end();
   });
 };
-var server = http.createServer(handler);
+const server = http.createServer(handler);
 
 server.listen(8080, function() {
-  console.log("Server running.");
+  console.log(`Server running @ http://${IP}:${PORT}/`);
 });
