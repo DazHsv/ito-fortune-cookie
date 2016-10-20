@@ -4,29 +4,22 @@ const http = require("http");
 const fs = require("fs");
 const config = require("./config/config");
 const path = require('path');
+const mime = require("mime");
 
 var visitCount = 0;
 
 var handler = function(req,res) {
-  let url, contentType = "text/plain";
+  let url, contentType;
+
   url = req.url;
+
   if (url == "/") {
     url = path.resolve(`${config.static_path}/index.html`);
   } else {
     url = path.resolve(config.static_path + url);
   }
 
-  switch(path.extname(url)) {
-    case '.js':
-      contentType = "text/javascript";
-      break;
-    case '.css':
-      contentType = "text/css";
-      break;
-    case '.html':
-      contentType = "text/html";
-      break;
-  };
+  contentType = mime.lookup(url);
 
   fs.access(url,function(accessErr) {
     if(!accessErr) {
@@ -42,7 +35,11 @@ var handler = function(req,res) {
             visitCount++;
           }
 
-          res.end(data.toString().replace(/visitCount/, visitCount));
+          if(contentType == "text/html") {
+            data = data.toString().replace(/visitCount/, visitCount);
+          }
+
+          res.end(data);
         } else {
           res.writeHead(200, {
             "Content-Type":"text/plain",

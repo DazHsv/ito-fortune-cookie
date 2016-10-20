@@ -4,13 +4,16 @@
   "description": "Aplicacion de galleta de la suerte",
   "main": "server.js",
   "scripts": {
-    "test":"",
-    "start":"nodemon server.js"
+    "test": "",
+    "start": "nodemon server.js"
   },
   "repository": {
     "url": "#",
     "type": "git"
   },
   "author": "@DazSnchz",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "mime": "^1.3.4"
+  }
 }

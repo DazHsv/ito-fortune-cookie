@@ -7,5 +7,7 @@ h1 {
 }
 
 img {
-  border-radius: 50%;
+  border-radius: 25%;
+  width: 50vh;
+  height: auto;
 }
