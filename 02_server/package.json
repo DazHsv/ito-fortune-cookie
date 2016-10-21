@@ -8,12 +8,13 @@
     "start": "nodemon server.js"
   },
   "repository": {
-    "url": "#",
+    "url": "https://github.com/DazHsv/ito-fortune-cookie.git",
     "type": "git"
   },
   "author": "@DazSnchz",
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
+    "global": "^4.3.1",
     "mime": "^1.3.4"
   }
 }

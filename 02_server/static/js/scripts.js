@@ -1,5 +1,7 @@
-document.addEventListener('DOMContentLoaded', function(){
-  document.body.appendChild(
-    document.createElement("p").appendChild(
-      document.createTextNode("Hola desde scripts.js")));
+'use strict';
+
+let button = document.querySelector(".js-saludar");
+
+button.addEventListener("click", function() {
+  swal("Bienvenido a mi sitio web.", ":3");
 });
